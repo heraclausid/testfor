@@ -1,17 +1,20 @@
+/* --- 0. PRESETS --- */
 html {
     scroll-behavior: smooth;
 }
 
+/* --- 1. SETUP VARIABEL (MATERIAL YOU PALETTE) --- */
 :root {
-    --bg-body: #fdfcff;
-    --bg-surface: #ffffff;
-    --bg-surface-2: #eff0ff;
+    /* LIGHT MODE */
+    --bg-body: #fdfcff;        
+    --bg-surface: #ffffff;     
+    --bg-surface-2: #eff0ff;   
     
-    --primary: #6d5dfc;
-    --on-primary: #ffffff;
+    --primary: #6d5dfc;        
+    --on-primary: #ffffff;     
     
-    --text-main: #1a1c1e;
-    --text-muted: #5e6469;
+    --text-main: #1a1c1e;      
+    --text-muted: #5e6469;     
     
     --success: #2ed573;
     --warning: #ffa502;
@@ -24,21 +27,23 @@ html {
     --radius-btn: 50px;
 }
 
+/* DARK MODE */
 body.dark-mode {
-    --bg-body: #121212;
-    --bg-surface: #1e1e1e;
-    --bg-surface-2: #2d2d2d;
+    --bg-body: #121212;        
+    --bg-surface: #1e1e1e;     
+    --bg-surface-2: #2d2d2d;   
     
-    --primary: #8c7aff;
-    --on-primary: #121212;
+    --primary: #8c7aff;        
+    --on-primary: #121212;     
     
-    --text-main: #e2e2e6;
-    --text-muted: #a0a5a8;
+    --text-main: #e2e2e6;      
+    --text-muted: #a0a5a8;     
 
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
+/* --- 2. RESET & GLOBAL --- */
 * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s; }
 
 body { 
@@ -55,7 +60,9 @@ body {
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 a { text-decoration: none; }
 ul { list-style: none; padding: 0; }
+img { display: block; max-width: 100%; }
 
+/* --- 3. KOMPONEN KARTU --- */
 .card {
     background-color: var(--bg-surface);
     border-radius: var(--radius-card);
@@ -65,6 +72,8 @@ ul { list-style: none; padding: 0; }
     margin-bottom: 24px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 
@@ -73,6 +82,43 @@ ul { list-style: none; padding: 0; }
     margin-bottom: 6px;
 }
 
+/* --- 4. IMAGE HANDLING (FIXED) --- */
+
+/* Gaya Gambar Standar (Untuk Grid Kecil) */
+.img-placeholder {
+    width: 100%;
+    height: 200px; /* Tinggi tetap untuk kartu kecil agar rapi */
+    background-color: var(--bg-surface-2);
+    border-radius: 20px; 
+    margin-bottom: 16px;
+    overflow: hidden; /* Potong gambar yang kelebihan */
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* KUNCI: Object Fit Cover agar gambar tidak gepeng */
+.img-placeholder img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 20px; 
+}
+
+/* Gaya Gambar Featured (Untuk Kartu Besar Utama) */
+/* Kita override settingan tinggi standar */
+.card .featured-img {
+    height: auto;       /* Biarkan memanjang otomatis */
+    min-height: 350px;  /* Minimal setinggi ini agar gagah */
+    flex: 1;            /* Mengisi ruang flexbox */
+}
+
+/* Pastikan gambar di dalam featured juga mengisi penuh */
+.card .featured-img img {
+    height: 100%;
+    min-height: 350px;
+}
+
+
+/* --- 5. TOMBOL (BUTTONS) --- */
 .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 12px 24px; border-radius: var(--radius-btn);
@@ -118,29 +164,29 @@ body.dark-mode .icon-btn:hover { color: var(--on-primary); }
 }
 .back-to-top:hover { opacity: 1; transform: translateY(-5px); }
 
+/* --- 6. HEADER & NAVIGASI --- */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
 .logo { font-weight: 800; font-size: 1.5rem; color: var(--text-main); letter-spacing: -0.5px; }
 
+/* --- 7. HERO SECTION --- */
 .hero { text-align: center; padding: 80px 0; }
 .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; font-weight: 700; }
 .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
 
+/* --- 8. GRID LAYOUT --- */
 .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
-.featured-wrapper { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
-.featured-img { flex: 1; min-width: 300px; height: 320px; }
-.featured-content { flex: 1; min-width: 300px; }
 
-.img-placeholder {
-    width: 100%; height: 180px;
-    background-color: var(--bg-surface-2);
-    border-radius: 20px; 
-    margin-bottom: 16px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-muted); font-weight: 500;
+/* Featured Layout (Flexbox Kiri-Kanan) */
+.featured-wrapper { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 40px; 
+    align-items: stretch; /* Agar tinggi gambar = tinggi teks */
 }
-.img-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+.featured-content { flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
 
+/* --- 9. BADGE & META --- */
 .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); }
 .badge { 
     display: inline-block; padding: 6px 16px; border-radius: 50px; 
@@ -154,10 +200,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .card-actions { 
     display: flex; 
     gap: 12px; 
-    margin-top: 20px; 
+    margin-top: auto; /* Dorong tombol ke paling bawah */
+    padding-top: 20px;
 }
 .card-actions .btn { flex: 1; }
 
+/* --- 10. CHANGELOG STYLE --- */
 .section-title { text-align: center; margin-bottom: 50px; margin-top: 40px; font-weight: 700; }
 .version-item { margin-bottom: 20px; scroll-margin-top: 100px; }
 .version-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-surface-2); padding-bottom: 10px; margin-bottom: 15px; }
@@ -167,14 +215,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .tag.fix { background: var(--danger); }
 .tag.tweak { background: var(--warning); color: #333; }
 
+/* --- 11. FOOTER --- */
 footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem; margin-top: auto; border-top: 1px solid var(--bg-surface-2); }
 .social-links a { display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; background-color: var(--bg-surface-2); color: var(--primary); margin: 0 5px; transition: 0.2s; }
 .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
 
-@media (max-width: 600px) {
-    .container { 
-        padding: 0 20px;
-    }
+/* --- 12. MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
     
     nav { gap: 10px; }
     .logo { font-size: 1.2rem; }
@@ -183,14 +231,20 @@ footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-
 
     .hero h1 { font-size: 2.2rem; }
     
-    .card { 
-        padding: 20px; 
-        border-radius: 24px;
+    .card { padding: 20px; border-radius: 24px; }
+    
+    /* Reset Featured Layout jadi Atas-Bawah di HP */
+    .featured-wrapper { flex-direction: column; gap: 20px; }
+    
+    /* Gambar di HP jangan terlalu tinggi */
+    .card .featured-img { 
+        min-height: 250px; 
+        height: 250px;
+    }
+    .card .featured-img img {
+        min-height: 100%;
     }
     
-    .card-actions { 
-        flex-direction: row; 
-        margin-top: 16px; 
-    }
+    .card-actions { flex-direction: row; margin-top: 16px; }
     .card-actions .btn { padding: 10px 10px; font-size: 0.8rem; }
 }
