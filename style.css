@@ -67,12 +67,12 @@ img { display: block; max-width: 100%; }
 
 .card h2, .card h3 { margin-top: 10px; margin-bottom: 6px; }
 
-/* --- 4. IMAGE HANDLING (KOREKSI DISINI) --- */
+/* --- 4. IMAGE HANDLING --- */
 
-/* Placeholder Standar (Untuk Grid Kecil) */
+/* Placeholder Standar (Kartu Kecil) */
 .img-placeholder {
     width: 100%;
-    height: 200px; /* Tinggi Fix untuk kartu kecil */
+    height: 200px; 
     background-color: var(--bg-surface-2);
     border-radius: 20px; 
     margin-bottom: 16px;
@@ -81,33 +81,27 @@ img { display: block; max-width: 100%; }
 }
 .img-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
 
-/* Featured Image (Untuk Kartu Besar Utama) */
-/* Agar layout tetap seperti semula tapi tinggi menyesuaikan */
+/* Featured Image (Kartu Besar) */
 .featured-img {
-    flex: 1;            /* Bagi ruang 50:50 dengan teks */
-    min-width: 300px;   /* Agar tidak terlalu gepeng di layar kecil */
-    position: relative; /* Penting */
-    
-    /* HAPUS height: 320px yang lama */
-    /* GANTI DENGAN INI agar mengikuti tinggi teks di sebelahnya: */
+    flex: 1;            
+    min-width: 300px;   
+    position: relative;
     display: flex;      
-    height: auto; 
-    min-height: 300px;  /* Minimal tinggi agar aman */
+    /* Hapus height auto agar konsisten */
+    min-height: 350px;  
     
     background-color: var(--bg-surface-2);
     border-radius: 20px;
     overflow: hidden;
 }
 
-/* Gambar di dalam featured MENGISI PENUH area yang tersedia */
 .featured-img img {
-    width: 100%;
-    height: 100%;       /* Ikut tinggi parent (featured-img) */
-    object-fit: cover;  /* Potong gambar agar pas penuh tanpa gepeng */
-    position: absolute; /* Kunci agar dia mau stretch 100% height */
+    position: absolute;
     top: 0; left: 0;
+    width: 100%; 
+    height: 100%;       
+    object-fit: cover;  
 }
-
 
 /* --- 5. BUTTONS --- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-btn); font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
@@ -136,7 +130,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; font-weight: 700; }
 .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
 
-/* --- 8. GRID LAYOUT & FEATURED FIX (FINAL) --- */
+/* --- 8. GRID LAYOUT & FEATURED FIX --- */
 .addon-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -144,57 +138,47 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     margin-bottom: 60px; 
 }
 
-/* FEATURED WRAPPER: KUNCI UTAMA */
+/* Featured Wrapper (Kiri-Kanan) */
 .featured-wrapper { 
     display: flex;
-    flex-direction: row; /* Wajib baris (Kiri-Kanan) */
-    align-items: stretch; /* Tinggi gambar = Tinggi teks */
+    flex-direction: row; 
+    align-items: stretch; /* Gambar & Teks sama tinggi */
     gap: 40px; 
-    
-    /* Hapus flex-wrap agar tidak turun ke bawah di desktop */
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap; /* Jangan turun ke bawah di desktop */
 }
 
+/* Bagian Teks Featured (KOREKSI LABEL DISINI) */
 .featured-content { 
-    flex: 1; /* Ambil sisa ruang 50% */
+    flex: 1; 
     display: flex; 
     flex-direction: column; 
-    justify-content: center; /* Teks rata tengah secara vertikal */
-    min-width: 0; /* Mencegah teks mendorong layout pecah */
-}
-
-/* GAMBAR FEATURED */
-.featured-img {
-    flex: 1;          /* Ambil ruang 50% */
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    background-color: var(--bg-surface-2);
+    justify-content: center; 
+    min-width: 0; 
     
-    /* Hapus height: auto agar dia patuh pada stretch */
-    min-height: 350px; /* Tinggi minimal agar gagah */
+    /* FIX: Agar label tidak melebar (stretch), tapi mengikuti ukuran teks */
+    align-items: flex-start; 
 }
 
-/* Gambar di dalam kotak featured */
-.featured-img img {
-    position: absolute; /* Kunci posisi absolut */
-    top: 0; left: 0;
-    width: 100%; 
-    height: 100%;       /* Paksa penuhi kotak induknya */
-    object-fit: cover;  /* Potong rapi (zoom) agar tidak gepeng */
-}
-
-
-/* --- 9. BADGE & META (Tetap) --- */
-.card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); }
+/* --- 9. BADGE & META --- */
+.card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); width: 100%; }
 .badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-right: 5px; color: #fff; }
 .badge.stable { background-color: var(--success); }
 .badge.beta { background-color: var(--warning); color: #2d2d2d; }
 .badge.script { background-color: var(--primary); }
-.card-actions { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; }
+
+/* Actions Button */
+.card-actions { 
+    display: flex; 
+    gap: 12px; 
+    margin-top: auto; 
+    padding-top: 20px;
+    
+    /* FIX: Paksa tombol lebar penuh karena parentnya flex-start */
+    width: 100%; 
+}
 .card-actions .btn { flex: 1; }
 
-/* --- 10. CHANGELOG & FOOTER (Tetap) --- */
+/* --- 10. CHANGELOG & FOOTER --- */
 .section-title { text-align: center; margin-bottom: 50px; margin-top: 40px; font-weight: 700; }
 .version-item { margin-bottom: 20px; scroll-margin-top: 100px; }
 .version-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-surface-2); padding-bottom: 10px; margin-bottom: 15px; }
@@ -207,26 +191,32 @@ footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-
 .social-links a { display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; background-color: var(--bg-surface-2); color: var(--primary); margin: 0 5px; transition: 0.2s; }
 .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
 
-/* --- 11. MOBILE RESPONSIVE (WAJIB ADA) --- */
-@media (max-width: 900px) { /* Trigger di Tablet/HP */
-    .featured-wrapper { 
-        flex-direction: column; /* Ubah jadi Atas-Bawah cuma di sini */
-        gap: 24px;
-    }
-    
-    .featured-img { 
-        width: 100%;
-        height: 250px;       /* Tinggi fix di HP */
-        min-height: 250px;
-    }
-    
-    /* Reset posisi gambar di HP */
-    .featured-img img { position: relative; } 
-    
+/* --- 11. MOBILE RESPONSIVE --- */
+@media (max-width: 900px) { 
     .container { padding: 0 20px; }
     nav { gap: 10px; }
     .logo { font-size: 1.2rem; }
+    .nav-right .btn { padding: 8px 14px; font-size: 0.75rem; }
+    .icon-btn { width: 38px; height: 38px; }
     .hero h1 { font-size: 2.2rem; }
     .card { padding: 20px; border-radius: 24px; }
+    
+    /* Reset Featured jadi Atas-Bawah */
+    .featured-wrapper { 
+        flex-direction: column; 
+        gap: 24px;
+        align-items: stretch; /* Kembalikan default di HP */
+    }
+    
+    /* Reset Alignment di HP agar rata tengah atau default */
+    .featured-content { align-items: stretch; } /* Di HP boleh stretch atau flex-start, tergantung selera */
+
+    .featured-img { 
+        width: 100%;
+        height: 250px;       
+        min-height: 250px;
+    }
+    .featured-img img { position: relative; } 
+    
     .card-actions { flex-direction: row; margin-top: 16px; }
 }
