@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heraclaus Studio | Minecraft Bedrock Addons</title>
     
-    <meta name="description" content="Download Addon Minecraft Bedrock berkualitas tinggi buatan Heraclaus Studio. Script API, Custom UI, dan fitur canggih lainnya.">
-    <meta property="og:title" content="Heraclaus Studio - Next Gen Bedrock Addons">
-    <meta property="og:description" content="Pusat download addon Minecraft Bedrock dengan fitur Script API dan UI Kustom.">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#6d5dfc">
+    <meta name="description" content="Download Addon Minecraft Bedrock berkualitas tinggi buatan Heraclaus Studio.">
+    <meta property="og:title" content="Heraclaus Studio">
+    <meta property="og:description" content="Pusat download addon Minecraft Bedrock.">
     
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -22,12 +20,8 @@
         <nav>
             <div class="logo">HERACLAUS</div>
             <div class="nav-right">
-                <a href="https://discord.gg/contoh" class="btn secondary">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <button class="icon-btn" id="theme-btn" onclick="toggleTheme()">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <a href="https://discord.gg/contoh" class="btn secondary"><i class="fab fa-discord"></i> Discord</a>
+                <button class="icon-btn" id="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
         </nav>
     </div>
@@ -46,15 +40,17 @@
     <section id="featured">
         <div class="container">
             <div class="card featured-wrapper">
-                <div class="featured-img img-placeholder">
+                <div class="featured-img">
                     <img src="https://via.placeholder.com/500x500/1e1e1e/7d7d7d?text=Admin+Suite+Preview" alt="Admin Suite">
                 </div>
                 
                 <div class="featured-content">
-                    <span class="badge stable"><i class="fas fa-check-circle"></i> V1.2 Stable</span>
-                    <span class="badge script"><i class="fas fa-code"></i> Script API</span>
+                    <div class="badge-row">
+                        <span class="badge stable"><i class="fas fa-check-circle"></i> V1.2 Stable</span>
+                        <span class="badge script"><i class="fas fa-code"></i> Script API</span>
+                    </div>
                     
-                    <h2 style="font-size: 2rem; margin: 15px 0 10px 0;">Admin Suite Pro</h2>
+                    <h2 style="font-size: 2rem; margin: 10px 0;">Admin Suite Pro</h2>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">
                         Kelola server atau realm kamu layaknya profesional. Dilengkapi dengan <b>Custom JSON UI</b> untuk sistem Ban, Teleportasi Warp, dan Gamemode Manager.
                     </p>
@@ -138,9 +134,7 @@
         </div>
     </section>
 
-    <a href="#" class="icon-btn back-to-top" id="btnBackToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <a href="#" class="icon-btn back-to-top" id="btnBackToTop"><i class="fas fa-arrow-up"></i></a>
 
     <footer>
         <div class="container">
@@ -158,21 +152,11 @@
         const themeIcon = themeBtn.querySelector('i');
         const body = document.body;
         const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-
+        if (currentTheme === 'dark') { body.classList.add('dark-mode'); themeIcon.classList.replace('fa-moon', 'fa-sun'); }
         function toggleTheme() {
             body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
+            if (body.classList.contains('dark-mode')) { themeIcon.classList.replace('fa-moon', 'fa-sun'); localStorage.setItem('theme', 'dark'); } 
+            else { themeIcon.classList.replace('fa-sun', 'fa-moon'); localStorage.setItem('theme', 'light'); }
         }
     </script>
     <script src="admin.js"></script>
