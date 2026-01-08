@@ -1,7 +1,5 @@
 /* --- 0. PRESETS --- */
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* --- 1. SETUP VARIABEL --- */
 :root {
@@ -9,20 +7,16 @@ html {
     --bg-body: #fdfcff;        
     --bg-surface: #ffffff;     
     --bg-surface-2: #eff0ff;   
-    
     --primary: #6d5dfc;        
     --on-primary: #ffffff;     
-    
     --text-main: #1a1c1e;      
     --text-muted: #5e6469;     
-    
     --success: #2ed573;
     --warning: #ffa502;
     --danger: #ff4757;
 
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
     --shadow-hover: 0 10px 25px rgba(109, 93, 252, 0.15); 
-    
     --radius-card: 28px;
     --radius-btn: 50px;
 }
@@ -32,13 +26,10 @@ body.dark-mode {
     --bg-body: #121212;        
     --bg-surface: #1e1e1e;     
     --bg-surface-2: #2d2d2d;   
-    
     --primary: #8c7aff;        
     --on-primary: #121212;     
-    
     --text-main: #e2e2e6;      
     --text-muted: #a0a5a8;     
-
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
@@ -64,12 +55,10 @@ img { display: block; max-width: 100%; }
     display: flex; flex-direction: column;
 }
 .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-
 .card h2, .card h3 { margin-top: 10px; margin-bottom: 6px; }
 
 /* --- 4. IMAGE HANDLING --- */
-
-/* Placeholder Standar (Kartu Kecil) */
+/* Placeholder Standar (Grid Kecil) */
 .img-placeholder {
     width: 100%;
     height: 200px; 
@@ -87,20 +76,14 @@ img { display: block; max-width: 100%; }
     min-width: 300px;   
     position: relative;
     display: flex;      
-    /* Hapus height auto agar konsisten */
     min-height: 350px;  
-    
     background-color: var(--bg-surface-2);
     border-radius: 20px;
     overflow: hidden;
 }
-
 .featured-img img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; 
-    height: 100%;       
-    object-fit: cover;  
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; object-fit: cover;  
 }
 
 /* --- 5. BUTTONS --- */
@@ -120,65 +103,47 @@ body.dark-mode .icon-btn:hover { color: var(--on-primary); }
 .back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--primary); color: var(--on-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; opacity: 0.8; }
 .back-to-top:hover { opacity: 1; transform: translateY(-5px); }
 
-/* --- 6. HEADER --- */
+/* --- 6. HEADER & HERO --- */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
 .logo { font-weight: 800; font-size: 1.5rem; color: var(--text-main); letter-spacing: -0.5px; }
-
-/* --- 7. HERO --- */
 .hero { text-align: center; padding: 80px 0; }
 .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; font-weight: 700; }
 .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
 
-/* --- 8. GRID LAYOUT & FEATURED FIX --- */
-.addon-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 24px; 
-    margin-bottom: 60px; 
-}
+/* --- 7. GRID LAYOUT & FEATURED --- */
+.addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
 
-/* Featured Wrapper (Kiri-Kanan) */
+/* Wrapper Featured (Kiri-Kanan Desktop) */
 .featured-wrapper { 
-    display: flex;
-    flex-direction: row; 
-    align-items: stretch; /* Gambar & Teks sama tinggi */
-    gap: 40px; 
-    flex-wrap: nowrap; /* Jangan turun ke bawah di desktop */
+    display: flex; flex-direction: row; 
+    align-items: stretch; gap: 40px; 
+    flex-wrap: nowrap; 
 }
 
-/* Bagian Teks Featured (KOREKSI LABEL DISINI) */
+/* Konten Teks Featured */
 .featured-content { 
-    flex: 1; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    min-width: 0; 
-    
-    /* FIX: Agar label tidak melebar (stretch), tapi mengikuti ukuran teks */
-    align-items: flex-start; 
+    flex: 1; display: flex; flex-direction: column; 
+    justify-content: center; min-width: 0; align-items: flex-start; 
 }
 
-/* --- 9. BADGE & META --- */
+/* --- 8. BADGE & META --- */
 .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); width: 100%; }
-.badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-right: 5px; color: #fff; }
+
+/* NEW: Wadah khusus agar Badge SEJAJAR (Kiri-Kanan) */
+.badge-row {
+    display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; width: 100%;
+}
+
+.badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; }
 .badge.stable { background-color: var(--success); }
 .badge.beta { background-color: var(--warning); color: #2d2d2d; }
 .badge.script { background-color: var(--primary); }
 
-/* Actions Button */
-.card-actions { 
-    display: flex; 
-    gap: 12px; 
-    margin-top: auto; 
-    padding-top: 20px;
-    
-    /* FIX: Paksa tombol lebar penuh karena parentnya flex-start */
-    width: 100%; 
-}
+.card-actions { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; width: 100%; }
 .card-actions .btn { flex: 1; }
 
-/* --- 10. CHANGELOG & FOOTER --- */
+/* --- 9. CHANGELOG & FOOTER --- */
 .section-title { text-align: center; margin-bottom: 50px; margin-top: 40px; font-weight: 700; }
 .version-item { margin-bottom: 20px; scroll-margin-top: 100px; }
 .version-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-surface-2); padding-bottom: 10px; margin-bottom: 15px; }
@@ -191,7 +156,7 @@ footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-
 .social-links a { display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; background-color: var(--bg-surface-2); color: var(--primary); margin: 0 5px; transition: 0.2s; }
 .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
 
-/* --- 11. MOBILE RESPONSIVE --- */
+/* --- 10. MOBILE RESPONSIVE --- */
 @media (max-width: 900px) { 
     .container { padding: 0 20px; }
     nav { gap: 10px; }
@@ -201,22 +166,9 @@ footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-
     .hero h1 { font-size: 2.2rem; }
     .card { padding: 20px; border-radius: 24px; }
     
-    /* Reset Featured jadi Atas-Bawah */
-    .featured-wrapper { 
-        flex-direction: column; 
-        gap: 24px;
-        align-items: stretch; /* Kembalikan default di HP */
-    }
-    
-    /* Reset Alignment di HP agar rata tengah atau default */
-    .featured-content { align-items: stretch; } /* Di HP boleh stretch atau flex-start, tergantung selera */
-
-    .featured-img { 
-        width: 100%;
-        height: 250px;       
-        min-height: 250px;
-    }
+    .featured-wrapper { flex-direction: column; gap: 24px; align-items: stretch; }
+    .featured-content { align-items: stretch; } 
+    .featured-img { width: 100%; height: 250px; min-height: 250px; }
     .featured-img img { position: relative; } 
-    
     .card-actions { flex-direction: row; margin-top: 16px; }
 }
