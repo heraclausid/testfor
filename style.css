@@ -136,19 +136,56 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; font-weight: 700; }
 .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
 
-/* --- 8. GRID LAYOUT & FEATURED FIX --- */
-.addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
-
-/* Wrapper Featured: Gunakan 'stretch' agar tinggi gambar = tinggi teks */
-.featured-wrapper { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 40px; 
-    align-items: stretch; /* KUNCI: Samakan tinggi kiri & kanan */
+/* --- 8. GRID LAYOUT & FEATURED FIX (FINAL) --- */
+.addon-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 24px; 
+    margin-bottom: 60px; 
 }
-.featured-content { flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
 
-/* --- 9. BADGE & META --- */
+/* FEATURED WRAPPER: KUNCI UTAMA */
+.featured-wrapper { 
+    display: flex;
+    flex-direction: row; /* Wajib baris (Kiri-Kanan) */
+    align-items: stretch; /* Tinggi gambar = Tinggi teks */
+    gap: 40px; 
+    
+    /* Hapus flex-wrap agar tidak turun ke bawah di desktop */
+    flex-wrap: nowrap; 
+}
+
+.featured-content { 
+    flex: 1; /* Ambil sisa ruang 50% */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Teks rata tengah secara vertikal */
+    min-width: 0; /* Mencegah teks mendorong layout pecah */
+}
+
+/* GAMBAR FEATURED */
+.featured-img {
+    flex: 1;          /* Ambil ruang 50% */
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--bg-surface-2);
+    
+    /* Hapus height: auto agar dia patuh pada stretch */
+    min-height: 350px; /* Tinggi minimal agar gagah */
+}
+
+/* Gambar di dalam kotak featured */
+.featured-img img {
+    position: absolute; /* Kunci posisi absolut */
+    top: 0; left: 0;
+    width: 100%; 
+    height: 100%;       /* Paksa penuhi kotak induknya */
+    object-fit: cover;  /* Potong rapi (zoom) agar tidak gepeng */
+}
+
+
+/* --- 9. BADGE & META (Tetap) --- */
 .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); }
 .badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-right: 5px; color: #fff; }
 .badge.stable { background-color: var(--success); }
@@ -157,7 +194,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .card-actions { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; }
 .card-actions .btn { flex: 1; }
 
-/* --- 10. CHANGELOG & FOOTER --- */
+/* --- 10. CHANGELOG & FOOTER (Tetap) --- */
 .section-title { text-align: center; margin-bottom: 50px; margin-top: 40px; font-weight: 700; }
 .version-item { margin-bottom: 20px; scroll-margin-top: 100px; }
 .version-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-surface-2); padding-bottom: 10px; margin-bottom: 15px; }
@@ -170,27 +207,26 @@ footer { text-align: center; padding: 50px 20px; color: var(--text-muted); font-
 .social-links a { display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; background-color: var(--bg-surface-2); color: var(--primary); margin: 0 5px; transition: 0.2s; }
 .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
 
-/* --- 11. MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
+/* --- 11. MOBILE RESPONSIVE (WAJIB ADA) --- */
+@media (max-width: 900px) { /* Trigger di Tablet/HP */
+    .featured-wrapper { 
+        flex-direction: column; /* Ubah jadi Atas-Bawah cuma di sini */
+        gap: 24px;
+    }
+    
+    .featured-img { 
+        width: 100%;
+        height: 250px;       /* Tinggi fix di HP */
+        min-height: 250px;
+    }
+    
+    /* Reset posisi gambar di HP */
+    .featured-img img { position: relative; } 
+    
     .container { padding: 0 20px; }
     nav { gap: 10px; }
     .logo { font-size: 1.2rem; }
-    .nav-right .btn { padding: 8px 14px; font-size: 0.75rem; }
-    .icon-btn { width: 38px; height: 38px; }
     .hero h1 { font-size: 2.2rem; }
     .card { padding: 20px; border-radius: 24px; }
-    
-    /* Mobile: Reset Layout Featured jadi Stack (Atas-Bawah) */
-    .featured-wrapper { flex-direction: column; gap: 20px; }
-    
-    /* Di HP, gambar jangan stretch 100% dari teks, tapi kasih tinggi tetap */
-    .featured-img { 
-        height: 250px; 
-        min-height: 250px;
-        position: relative; /* Tetap perlu ini */
-    }
-    .featured-img img { position: relative; } /* Reset position absolute di HP */
-
     .card-actions { flex-direction: row; margin-top: 16px; }
-    .card-actions .btn { padding: 10px 10px; font-size: 0.8rem; }
 }
