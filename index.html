@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heraclaus Studio | Minecraft Bedrock Addons</title>
+    
+    <meta name="description" content="Download Addon Minecraft Bedrock berkualitas tinggi buatan Heraclaus Studio. Script API, Custom UI, dan fitur canggih lainnya.">
+    <meta property="og:title" content="Heraclaus Studio - Next Gen Bedrock Addons">
+    <meta property="og:description" content="Pusat download addon Minecraft Bedrock dengan fitur Script API dan UI Kustom.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#6d5dfc">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">HERACLAUS</div>
+            <div class="nav-right">
+                <a href="https://discord.gg/contoh" class="btn secondary">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <button class="icon-btn" id="theme-btn" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Next-Gen Bedrock Addons</h1>
+            <p>Meningkatkan pengalaman bermain Minecraft Bedrock dengan Script API canggih, UI kustom, dan fitur inovatif.</p>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <a href="#featured" class="btn primary">Project Unggulan</a>
+                <a href="#gallery" class="btn secondary">Lihat Semua</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured">
+        <div class="container">
+            <div class="card featured-wrapper">
+                <div class="featured-img img-placeholder">
+                    <img src="https://via.placeholder.com/500x500/1e1e1e/7d7d7d?text=Admin+Suite+Preview" alt="Admin Suite">
+                </div>
+                
+                <div class="featured-content">
+                    <span class="badge stable"><i class="fas fa-check-circle"></i> V1.2 Stable</span>
+                    <span class="badge script"><i class="fas fa-code"></i> Script API</span>
+                    
+                    <h2 style="font-size: 2rem; margin: 15px 0 10px 0;">Admin Suite Pro</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">
+                        Kelola server atau realm kamu layaknya profesional. Dilengkapi dengan <b>Custom JSON UI</b> untuk sistem Ban, Teleportasi Warp, dan Gamemode Manager.
+                    </p>
+                    
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-bottom: 30px;">
+                        <li>Ban & Kick UI dengan alasan kustom</li>
+                        <li>Sistem Warp Point (Set & Teleport)</li>
+                        <li>Anti-Cheat Tools & Player Inspect</li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="#" class="btn primary"><i class="fas fa-download"></i> Download</a>
+                        <a href="changelog.html#admin-suite" class="btn secondary"><i class="fas fa-history"></i> Update Log</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Karya Lainnya</h2>
+            
+            <div class="addon-grid">
+                
+                <div class="card">
+                    <div class="img-placeholder">
+                        <img src="https://via.placeholder.com/400x250/1e1e1e/7d7d7d?text=Discord+Bot" alt="Bot">
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fas fa-robot"></i> Script</span>
+                        <span style="color: var(--warning); font-weight:bold;">Beta v0.5</span>
+                    </div>
+                    <h3>Discord Connect AI</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        Hubungkan chat in-game Minecraft langsung ke Discord server secara realtime.
+                    </p>
+                    <div class="card-actions">
+                        <a href="#" class="btn secondary"><i class="fas fa-download"></i> Get</a>
+                        <a href="changelog.html#discord-bot" class="btn secondary"><i class="fas fa-history"></i> Log</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-placeholder">
+                        <img src="https://via.placeholder.com/400x250/1e1e1e/7d7d7d?text=Cosmetic" alt="Cosmetic">
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fas fa-tshirt"></i> Visuals</span>
+                        <span style="color: var(--success); font-weight:bold;">v1.0 Ready</span>
+                    </div>
+                    <h3>Cosmetic Wardrobe</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        Koleksi sayap, trails, dan topi unik dengan sistem entity terbaru.
+                    </p>
+                    <div class="card-actions">
+                        <a href="#" class="btn secondary"><i class="fas fa-download"></i> Get</a>
+                        <a href="changelog.html#cosmetic" class="btn secondary"><i class="fas fa-history"></i> Log</a>
+                    </div>
+                </div>
+
+                 <div class="card">
+                    <div class="img-placeholder">
+                        <img src="https://via.placeholder.com/400x250/1e1e1e/7d7d7d?text=SMP+Kit" alt="Kit">
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fas fa-cubes"></i> Survival</span>
+                        <span style="color: var(--success); font-weight:bold;">v2.1</span>
+                    </div>
+                    <h3>Hiperion SMP Kit</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        Starter pack server survival. One-player-sleep, mob head drops.
+                    </p>
+                    <div class="card-actions">
+                        <a href="#" class="btn secondary"><i class="fas fa-download"></i> Get</a>
+                        <a href="changelog.html#smp-kit" class="btn secondary"><i class="fas fa-history"></i> Log</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="icon-btn back-to-top" id="btnBackToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p style="margin-top:20px">&copy; 2026 Heraclaus Studio.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = themeBtn.querySelector('i');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    </script>
+    <script src="admin.js"></script>
+</body>
+</html>
